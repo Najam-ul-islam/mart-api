@@ -1,0 +1,40 @@
+name: "imtiaz-mart-api"
+services:
+  api:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    networks:
+      - mart-network
+    depends_on:
+      - db
+  db:
+    image: postgres:latest
+    restart: always
+    environment:
+      - POSTGRES_USER=mart
+      - POSTGRES_PASSWORD=mart@123
+      - POSTGRES_DB=online-mart
+    ports:
+      - "5432:5432"
+    networks:
+      - mart-network
+    volumes:
+      - mart-db:/var/lib/postgresql/data
+
+  kafka:
+    image: apache/kafka:3.7.0
+    ports:
+      - "9092:9092"
+    networks:
+      - mart-network
+    
+
+volumes:
+  mart-db:
+    driver: local
+networks:
+  mart-network:
+    driver: bridge

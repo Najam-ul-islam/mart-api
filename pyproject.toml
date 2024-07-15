@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "imtiaz-mart-api"
+version = "0.1.0"
+description = ""
+authors = ["Muhammad Najam Ul Islam <26120402+Najam-ul-islam@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.111.0"
+uvicorn = {extras = ["standard"], version = "^0.30.0"}
+sqlmodel = "^0.0.18"
+python-jose = {extras = ["cryptography"], version = "^3.3.0"}
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
